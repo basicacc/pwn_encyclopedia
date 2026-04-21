@@ -3,20 +3,21 @@ But if you need simple understanding of it. It happens when we write more data t
 
 In example binary, when we go to vuln() function, we can see buffer is 64 (integers) bytes in size but read() function write 0x200 (hex) bytes in it. It is obviously stack buffer overflow. Now we have to open the binary in gdb to see what is offset from buffer to return address, so we can overwrite it to win() function address.
 In this example I used:
-
+```bash
 python3 -c "print('A' * 64)"  
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+```
 
 So I can have exactly 64 A's to fill up buffer then I checked out stack in gdb to see offset:
-![[../images/stack-bof-ret2win/1.png]]
+![](../images/stack-bof-ret2win/1.png)
 
 As you can see, there is **0x004012ca** it is exactly 8 bytes far from stack. using this information we can write python script, there is no need for pwntools but to learn it for better usage, I intentionally use it.
 
 We can also see in checksec PIE is not enabled so we can overwrite easily.
-![[../images/stack-bof-ret2win/2.png]]
+![](../images/stack-bof-ret2win/2.png)
 
 At the end we get this script as solution:
-```py
+```python
 from pwn import *
 
 context.binary = ELF("stack-bof-ret2win")
