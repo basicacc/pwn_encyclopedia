@@ -3,4 +3,9 @@ The symbols are intentionally not stripped, this is encyclopedia style pwn demos
 
 DONE:
 stack-bof-ret2win
+
+
 stack-shellcode
+
+
+format-string-auth
