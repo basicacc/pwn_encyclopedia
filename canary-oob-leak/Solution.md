@@ -3,7 +3,7 @@ First we have to understand what is canary.
 A **stack canary** is a security mechanism used in binary programs to detect and prevent stack-based buffer overflow attacks. It works by placing a small, random, and unpredictable integer on the stack just before the function's return address
 
 To understand visually, it looks like this:
-![](../images/canary-oob-leak/1.png)
+![](../_images/canary-oob-leak/1.png)
 
 First 12 byte input is mine, 0xa8601ba427809700 is stack canary which we have to leak in leak_stack. Then using same stack canary we can create payload to overwrite return address, what we will do is find correct offset from input in vuln, write correct stack canary to its place so it is not overwritten and then overwrite return address.
 Now question is, how can we leak stack canary?

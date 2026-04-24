@@ -1,6 +1,6 @@
 This is simple format string vulnerable binary where we have to overwrite data to pass check and get flag.
 
-![](../images/format-string-auth/1.png)
+![](../_images/format-string-auth/1.png)
 
 our input is fed into printf, which is vulnerable to format string attacks and next "auth" variable (which is 0x0) is checked if it equals to 0x13371337. We have to exploit it.
 ### Manually

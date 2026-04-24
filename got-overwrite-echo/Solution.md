@@ -1,12 +1,12 @@
 We need to overwrite got address using format string attack in this example.
 In this example's disassembly we can see putchar() and puts() functions are called after printf() (vulnerable to format string attacks). In this case we can check if binary has static got entries and if section is writtable:
-![](../images/got-overwrite-echo/1.png)
+![](../_images/got-overwrite-echo/1.png)
 
 Using readelf --got-contents:
-![](../images/got-overwrite-echo/2.png)
+![](../_images/got-overwrite-echo/2.png)
 
 readelf -S:
-![](../images/got-overwrite-echo/3.png)
+![](../_images/got-overwrite-echo/3.png)
 We can see it is writtable.
 
 we can choose either one putchar ot puts to overwrite. It is simple formst string attack as before and we have address too. Simply we can use automated attack using pwntools:

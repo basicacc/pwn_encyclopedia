@@ -9,12 +9,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
 So I can have exactly 64 A's to fill up buffer then I checked out stack in gdb to see offset:
-![](../images/stack-bof-ret2win/1.png)
+![](../_images/stack-bof-ret2win/1.png)
 
 As you can see, there is **0x004012ca** it is exactly 8 bytes far from stack. using this information we can write python script, there is no need for pwntools but to learn it for better usage, I intentionally use it.
 
 We can also see in checksec PIE is not enabled so we can overwrite easily.
-![](../images/stack-bof-ret2win/2.png)
+![](_images/stack-bof-ret2win/2.png)
 
 At the end we get this script as solution:
 ```python
